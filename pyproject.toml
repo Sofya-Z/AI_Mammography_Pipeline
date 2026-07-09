@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mammokit"
+version = "0.1.0"
+description = "Toolkit for full-field digital mammography classification"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "scikit-learn>=1.3",
+    "PyYAML>=6.0",
+    "pydicom>=2.4",
+    "opencv-python-headless>=4.8",
+    "torch>=2.1",
+    "torchvision>=0.16",
+    "albumentations>=1.4",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.4"]
+
+[tool.setuptools.packages.find]
+include = ["mammokit*"]
+
+[tool.ruff]
+line-length = 110

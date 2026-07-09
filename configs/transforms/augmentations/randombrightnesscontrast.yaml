@@ -1,0 +1,5 @@
+RandomBrightnessContrast:
+  brightness_limit: [-0.1, 0.1]
+  contrast_limit: [-0.2, 0.2]
+  brightness_by_max: true
+  p: 0.5

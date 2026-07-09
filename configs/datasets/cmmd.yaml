@@ -1,0 +1,6 @@
+name: cmmd
+root: data/processed/CMMD
+ann_files:
+  train: data/processed/CMMD/train.csv
+  valid: data/processed/CMMD/valid.csv
+class_map: { "B": 0, "M": 1 }

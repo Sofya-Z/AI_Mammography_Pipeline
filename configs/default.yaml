@@ -1,0 +1,86 @@
+# Default training configuration.
+#
+# Override any value from the command line, e.g.:
+#   python scripts/train.py --config configs/default.yaml \
+#       model.name=mammo_clip transforms.preset=light train.num_epochs=50
+
+includes:
+  - models/efficientnet.yaml
+  - transforms/standard.yaml
+
+# DICOM reading applied to every source
+source_defaults:
+  read_options:
+    apply_modality_lut: false
+    apply_voi_lut: false
+    force_monochrome2: true
+    clip: false
+    clahe: false
+
+# Training pool + a held-out external source for testing
+sources:
+  - name: vindr
+    root: data/processed/vindr
+    ann_files:
+      train: data/processed/vindr/train.csv
+      valid: data/processed/vindr/valid.csv
+    drop_classes: ["BI-RADS 0", "BI-RADS 3", "BI-RADS 4", "BI-RADS 6"]
+    class_map: { "BI-RADS 1": 0, "BI-RADS 2": 0, "BI-RADS 5": 1 }
+
+  - name: inbreast
+    root: data/processed/INBreast
+    ann_files:
+      train: data/processed/INBreast/train.csv
+      valid: data/processed/INBreast/valid.csv
+    drop_classes: ["3", "4a", "4b", "4c"]
+    class_map: { "1": 0, "2": 0, "5": 1, "6": 1 }
+
+  - name: cmmd
+    root: data/processed/CMMD
+    ann_files:
+      train: data/processed/CMMD/train.csv
+      valid: data/processed/CMMD/valid.csv
+    class_map: { "B": 0, "M": 1 }
+
+  - name: cbis
+    root: data/processed/CBIS_DDSM
+    ann_files:
+      train: data/processed/CBIS_DDSM/train.csv
+      valid: data/processed/CBIS_DDSM/valid.csv
+    class_map:
+      NO_OBJECT: 0
+      BENIGN_WITHOUT_CALLBACK: 0
+      BENIGN: 0
+      MALIGNANT: 1
+
+  - name: mosmed
+    root: data/processed/mosmed
+    ann_files:
+      test: data/processed/mosmed/test.csv
+    class_map: { "0": 0, "1": 1 }
+
+transforms:
+  preset: standard        # light | standard | full | none
+  resolution:
+    height: 1024
+    width: 1024
+    keep_ratio: false
+  normalize:
+    mean: [0.1553, 0.1553, 0.1553]
+    std:  [0.2344, 0.2344, 0.2344]
+
+model:
+  name: efficientnet      # efficientnet | mammo_clip | medclip | biomedclip | openai_clip
+  num_classes: 2
+
+train:
+  seed: 42
+  device: null
+  num_epochs: 30
+  batch_size: 8
+  num_workers: 4
+  lr: 0.0001
+  loss:
+    type: FocalLoss
+    kwargs: { alpha: 0.5, gamma: 2.0, reduction: mean }
+  checkpoint: outputs/model.pt

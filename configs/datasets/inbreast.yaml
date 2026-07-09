@@ -1,0 +1,7 @@
+name: inbreast
+root: data/processed/INBreast
+ann_files:
+  train: data/processed/INBreast/train.csv
+  valid: data/processed/INBreast/valid.csv
+drop_classes: ["3", "4a", "4b", "4c"]
+class_map: { "1": 0, "2": 0, "5": 1, "6": 1 }

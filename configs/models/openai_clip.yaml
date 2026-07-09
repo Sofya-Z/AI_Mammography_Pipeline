@@ -1,0 +1,5 @@
+model:
+  name: openai_clip
+  num_classes: 2
+  weights_path: null
+  freeze_encoder: true

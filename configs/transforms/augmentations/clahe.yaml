@@ -1,0 +1,1 @@
+CLAHE: { clip_limit: 1.5, tile_grid_size: [8, 8], p: 0.35 }

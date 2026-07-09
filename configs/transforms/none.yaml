@@ -1,0 +1,6 @@
+transforms:
+  preset: none
+  resolution: { height: 1024, width: 1024, keep_ratio: false }
+  normalize:
+    mean: [0.1553, 0.1553, 0.1553]
+    std:  [0.2344, 0.2344, 0.2344]

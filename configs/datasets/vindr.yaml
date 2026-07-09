@@ -1,0 +1,7 @@
+name: vindr
+root: data/processed/vindr
+ann_files:
+  train: data/processed/vindr/train.csv
+  valid: data/processed/vindr/valid.csv
+drop_classes: ["BI-RADS 0", "BI-RADS 3", "BI-RADS 4", "BI-RADS 6"]
+class_map: { "BI-RADS 1": 0, "BI-RADS 2": 0, "BI-RADS 5": 1 }

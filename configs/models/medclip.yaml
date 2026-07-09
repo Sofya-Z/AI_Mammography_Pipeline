@@ -1,0 +1,5 @@
+model:
+  name: medclip
+  num_classes: 2
+  weights_path: null
+  freeze_encoder: true

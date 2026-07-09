@@ -1,0 +1,7 @@
+# EfficientNet-B5 visual encoder. Provide encoder weights via weights_path;
+# otherwise a stub encoder keeps the head trainable.
+model:
+  name: mammo_clip
+  num_classes: 2
+  weights_path: null
+  freeze_encoder: true

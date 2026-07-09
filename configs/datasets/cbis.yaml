@@ -1,0 +1,10 @@
+name: cbis
+root: data/processed/CBIS_DDSM
+ann_files:
+  train: data/processed/CBIS_DDSM/train.csv
+  valid: data/processed/CBIS_DDSM/valid.csv
+class_map:
+  NO_OBJECT: 0
+  BENIGN_WITHOUT_CALLBACK: 0
+  BENIGN: 0
+  MALIGNANT: 1

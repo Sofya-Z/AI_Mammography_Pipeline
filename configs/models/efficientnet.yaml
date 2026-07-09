@@ -1,0 +1,5 @@
+model:
+  name: efficientnet
+  backbone: efficientnet_b3
+  weights: EfficientNet_B3_Weights.DEFAULT
+  num_classes: 2
