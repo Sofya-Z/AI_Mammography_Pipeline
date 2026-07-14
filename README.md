@@ -1,6 +1,5 @@
 # mammokit
 
-[![CI](https://github.com/ziminasofya-glitch/mammography-ai-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/ziminasofya-glitch/mammography-ai-pipeline/actions)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -56,9 +55,6 @@ pip install -e ".[dev]"
 ## Usage
 
 ```bash
-# 0. Check the pipeline runs on synthetic DICOMs (no real data needed)
-python tests/test_smoke.py
-
 # 1. See how to obtain each dataset
 python scripts/download_datasets.py --info
 
